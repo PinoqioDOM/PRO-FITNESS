@@ -1,0 +1,347 @@
+.price-header {
+    background: black;
+    min-height: 100vh;
+    padding: 60px 20px;
+    color: white;
+    margin-top: 1rem;
+}
+
+.price-header h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 60px;
+    background: linear-gradient(white);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite alternate;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.price-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    perspective: 1000px;
+    font-weight: bold;
+}
+
+.price-card {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: 0 0 10px white;
+    animation: slideUp 0.3s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40px 30px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.blue .card-inner {
+    background: linear-gradient(145deg, #1a237e, #3949ab);
+    border: 1px solid #5c6bc0;
+    animation: slideInLeft 1s ease forwards;
+}
+
+.gold .card-inner {
+    background: linear-gradient(145deg, #ff8f00, #ffc107);
+    border: 1px solid #ffeb3b;
+    color: #000;
+    animation: slideInUp 1s ease forwards;
+}
+
+.red .card-inner {
+    background: linear-gradient(145deg, #c62828, #e53935);
+    border: 1px solid #ef5350;
+    animation: slideInRight 1s ease forwards;
+}
+
+.popular {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    z-index: 11;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+.price-card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.price-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.period {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: normal;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.features li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.features li:hover {
+    transform: translateX(5px);
+    opacity: 0.8;
+}
+
+.features li:last-child {
+    border-bottom: none;
+}
+
+.feature-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.8rem;
+    margin-right: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .price-cards {
+        gap: 30px;
+    }
+
+    .price-card {
+        width: 300px;
+        height: 450px;
+    }
+
+    .price-header h1 {
+        font-size: 3rem;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .price-header {
+        padding: 40px 15px;
+    }
+
+    .price-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .price-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .price-card {
+        width: 280px;
+        height: 420px;
+    }
+
+    .popular {
+        transform: scale(1);
+    }
+
+    .price-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card-inner {
+        padding: 30px 25px;
+    }
+
+    .price {
+        font-size: 2.5rem;
+    }
+
+    .price-card h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .features li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-header {
+        padding: 30px 10px;
+    }
+
+    .price-header h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .price-card {
+        width: 95%;
+        max-width: 300px;
+        height: 400px;
+    }
+
+    .card-inner {
+        padding: 25px 20px;
+    }
+
+    .price-card h2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .period {
+        font-size: 0.9rem;
+    }
+
+    .features li {
+        font-size: 0.85rem;
+        padding: 8px 0;
+    }
+
+    .feature-icon {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 0.7rem;
+        margin-right: 10px;
+    }
+
+    .popular-badge {
+        padding: 6px 15px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .price-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .price-card {
+        height: 380px;
+    }
+
+    .price-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .price {
+        font-size: 1.8rem;
+    }
+
+    .features li {
+        font-size: 0.8rem;
+    } 
+}
